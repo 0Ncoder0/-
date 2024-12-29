@@ -14,7 +14,7 @@
   - 门级实现
   - 多路复用器实现
 
-$$
+```math
 \begin{tikzpicture}
 % 输入端
 \draw (0,6) node[left] {$A$};
@@ -50,7 +50,7 @@ $$
 \draw (xor2.out) -- ++(1,0) node[right] {$S$};
 \draw (or1.out) -- ++(1,0) node[right] {$C_{out}$};
 \end{tikzpicture}
-$$
+```
 
 ### 串行加法器
 
