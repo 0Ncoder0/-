@@ -14,48 +14,42 @@
   - 门级实现
   - 多路复用器实现
 
-```math
-\documentclass{article}
-\usepackage{circuitikz}
-
-\begin{document}
+```latex
 \begin{circuitikz}
-  \draw
-    % 输入标记
-    (0,4) node[left] {A}
-    (0,3) node[left] {B}
-    (0,1) node[left] {$C_{in}$}
+% 输入端
+\draw (0,6) node[left] {$A$};
+\draw (0,4) node[left] {$B$};
+\draw (0,2) node[left] {$C_{in}$};
 
-    % 异或门
-    (2,3.5) node[xor port] (xor1) {XOR}
-    (4,2.5) node[xor port] (xor2) {XOR}
+% 第一个XOR门
+\draw (2,5) node[xor port] (xor1) {};
+\draw (0,6) -| (xor1.in 1);
+\draw (0,4) -| (xor1.in 2);
 
-    % 与门
-    (2,1.5) node[and port] (and1) {AND}
-    (4,0.5) node[and port] (and2) {AND}
+% 第二个XOR门（计算S）
+\draw (5,4) node[xor port] (xor2) {};
+\draw (xor1.out) -| (xor2.in 1);
+\draw (0,2) -| (xor2.in 2);
 
-    % 或门
-    (6,1) node[or port] (or1) {OR}
+% 第一个AND门
+\draw (3,2) node[and port] (and1) {};
+\draw (0,6) -| (and1.in 1);
+\draw (0,4) -| (and1.in 2);
 
-    % 连线
-    (0,4) -- (xor1.in 1)
-    (0,3) -- (xor1.in 2)
-    (xor1.out) -- (xor2.in 1)
-    (0,1) -- (xor2.in 2)
-    (xor2.out) -- (7,2.5) node[right] {S}
+% 第二个AND门
+\draw (5,1) node[and port] (and2) {};
+\draw (xor1.out) -| (and2.in 1);
+\draw (0,2) -| (and2.in 2);
 
-    % 进位输出连线
-    (or1.out) -- (7,1) node[right] {$C_{out}$}
+% OR门
+\draw (7,1.5) node[or port] (or1) {};
+\draw (and1.out) -| (or1.in 1);
+\draw (and2.out) -| (or1.in 2);
 
-    % 补充缺失的连线
-    (0,4) -| (and1.in 1)
-    (0,3) -| (and1.in 2)
-    (xor1.out) -| (and2.in 1)
-    (0,1) -| (and2.in 2)
-    (and1.out) -| (or1.in 1)
-    (and2.out) -| (or1.in 2);
-\end{circuitikz};
-\end{document}
+% 输出端
+\draw (xor2.out) -- ++(1,0) node[right] {$S$};
+\draw (or1.out) -- ++(1,0) node[right] {$C_{out}$};
+\end{circuitikz}
 ```
 
 ### 串行加法器
