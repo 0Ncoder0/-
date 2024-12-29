@@ -15,6 +15,7 @@
   - 多路复用器实现
 
 ```math
+\usepackage{circuitikz}
 \begin{circuitikz}
 % 输入端
 \draw (0,6) node[left] {$A$};
