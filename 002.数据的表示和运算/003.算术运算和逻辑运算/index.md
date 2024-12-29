@@ -14,9 +14,8 @@
   - 门级实现
   - 多路复用器实现
 
-```math
-\usepackage{circuitikz}
-\begin{circuitikz}
+$$
+\begin{tikzpicture}
 % 输入端
 \draw (0,6) node[left] {$A$};
 \draw (0,4) node[left] {$B$};
@@ -50,8 +49,8 @@
 % 输出端
 \draw (xor2.out) -- ++(1,0) node[right] {$S$};
 \draw (or1.out) -- ++(1,0) node[right] {$C_{out}$};
-\end{circuitikz}
-```
+\end{tikzpicture}
+$$
 
 ### 串行加法器
 
