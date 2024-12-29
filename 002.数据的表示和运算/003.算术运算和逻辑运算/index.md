@@ -14,43 +14,27 @@
   - 门级实现
   - 多路复用器实现
 
-```math
-\begin{tikzpicture}
-% 输入端
-\draw (0,6) node[left] {$A$};
-\draw (0,4) node[left] {$B$};
-\draw (0,2) node[left] {$C_{in}$};
-
-% 第一个XOR门
-\draw (2,5) node[xor port] (xor1) {};
-\draw (0,6) -| (xor1.in 1);
-\draw (0,4) -| (xor1.in 2);
-
-% 第二个XOR门（计算S）
-\draw (5,4) node[xor port] (xor2) {};
-\draw (xor1.out) -| (xor2.in 1);
-\draw (0,2) -| (xor2.in 2);
-
-% 第一个AND门
-\draw (3,2) node[and port] (and1) {};
-\draw (0,6) -| (and1.in 1);
-\draw (0,4) -| (and1.in 2);
-
-% 第二个AND门
-\draw (5,1) node[and port] (and2) {};
-\draw (xor1.out) -| (and2.in 1);
-\draw (0,2) -| (and2.in 2);
-
-% OR门
-\draw (7,1.5) node[or port] (or1) {};
-\draw (and1.out) -| (or1.in 1);
-\draw (and2.out) -| (or1.in 2);
-
-% 输出端
-\draw (xor2.out) -- ++(1,0) node[right] {$S$};
-\draw (or1.out) -- ++(1,0) node[right] {$C_{out}$};
-\end{tikzpicture}
+```mermaid
+graph LR
+    A[输入A] --> XOR1((⊕))
+    B[输入B] --> XOR1
+    XOR1 --> XOR2((⊕))
+    Cin[进位输入] --> XOR2
+    XOR2 --> S[和S]
+    
+    A --> AND1((&))
+    B --> AND1
+    AND1 --> OR((+))
+    
+    A --> XOR3((⊕))
+    B --> XOR3
+    XOR3 --> AND2((&))
+    Cin --> AND2
+    AND2 --> OR
+    OR --> Cout[进位输出]
 ```
+
+
 
 ### 串行加法器
 
