@@ -14,7 +14,7 @@
   - 门级实现
   - 多路复用器实现
 
-```latex
+```math
 \begin{circuitikz}
 % 输入端
 \draw (0,6) node[left] {$A$};
