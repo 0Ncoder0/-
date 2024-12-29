@@ -9,32 +9,11 @@
   - 两个输出：S（和）和 Cout（进位输出）
 - 逻辑表达式
   - S = A ⊕ B ⊕ Cin
+    - S = A 异或 B 异或 Cin （和输出）
   - Cout = AB + (A⊕B)Cin
+    - Cout = (A 与 B) 或 ((A 异或 B) 与 Cin) （进位输出）
 - 实现电路
-  - 门级实现
-  - 多路复用器实现
-
-```mermaid
-graph LR
-    A[输入A] --> XOR1((⊕))
-    B[输入B] --> XOR1
-    XOR1 --> XOR2((⊕))
-    Cin[进位输入] --> XOR2
-    XOR2 --> S[和S]
-    
-    A --> AND1((&))
-    B --> AND1
-    AND1 --> OR((+))
-    
-    A --> XOR3((⊕))
-    B --> XOR3
-    XOR3 --> AND2((&))
-    Cin --> AND2
-    AND2 --> OR
-    OR --> Cout[进位输出]
-```
-
-
+  ![alt text](一位全加器.png)
 
 ### 串行加法器
 
